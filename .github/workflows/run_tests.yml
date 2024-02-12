@@ -1,4 +1,4 @@
-name: Run tests
+name: Run Go tests
 on: [workflow_dispatch,push]
 jobs:
   test:
@@ -12,5 +12,8 @@ jobs:
           go-version: '1.21.3'
       - run: go version
       - run: cd Go
+      - name: Get dependencies
+        run: |
+          go get -v -t -d ./...    
       - run: go test .
        
